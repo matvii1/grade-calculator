@@ -1,9 +1,10 @@
 import FormHeader from "@/components/FormHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import { getCurrentGrade } from "@/lib/getCurrentGrade";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -20,10 +21,8 @@ const GradeForm: FC<GradeFormProps> = ({
   numberOfForms,
   setCalculatedGrade,
 }) => {
-  const array = useMemo(
-    () => new Array(+numberOfForms).fill(0),
-    [numberOfForms],
-  );
+  const { toast } = useToast()
+  const array = new Array(+numberOfForms).fill(0);
 
   console.log(array);
 
@@ -61,14 +60,19 @@ const GradeForm: FC<GradeFormProps> = ({
     register,
     formState: { errors },
   } = gradeMethods;
-  console.log(errors.grades);
 
   function onSubmit(data: GradeFormData) {
-    console.log("submitted");
-
     const currentGrade = getCurrentGrade(data);
 
-    setCalculatedGrade(currentGrade);
+    if (currentGrade > 1) {
+      setCalculatedGrade(currentGrade);
+    } else {
+      toast({
+        variant: 'destructive',
+        title: 'Something went wrong',
+        description: 'Your grade is below 1%'
+      })
+    }
   }
 
   return (
