@@ -29,6 +29,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         type={type}
+        pattern="[0-9]*"
+        inputMode="numeric"
         autoComplete="off"
         className={cn(
           inputVariants({
