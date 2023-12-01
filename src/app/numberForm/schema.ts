@@ -11,5 +11,5 @@ export const numberFormSchema = z.object({
 export type NumberFormSchema = z.infer<typeof numberFormSchema>;
 
 export const defaultValues = {
-  number: 0,
+  number: 1,
 };
