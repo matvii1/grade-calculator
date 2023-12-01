@@ -47,7 +47,7 @@ const NumberForm: FC<NumberFormProps> = ({
 
         <div className="mt-2 flex justify-end">
           <Button type="submit" variant="outline">
-            Proceed
+            Apply changes
           </Button>
         </div>
       </form>
