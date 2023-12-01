@@ -16,7 +16,7 @@ function App() {
   }
 
   return (
-    <div className="h-[95vh] bg-main bg-contain bg-bottom bg-no-repeat md:h-[95vh] md:bg-contain">
+    <div className="h-[95dvh] bg-main bg-contain bg-bottom bg-no-repeat md:h-[95dvh] md:bg-contain">
       <div className="md:mt-18 mx-auto mt-14 max-w-md px-2">
         <div className="max-h-[550px] overflow-y-auto rounded-xl border-2 border-slate-400 bg-white/[0.5] px-8 py-4 backdrop-blur-md">
           {Math.round(calculatedGrade) ? (

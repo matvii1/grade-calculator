@@ -18,12 +18,12 @@ const CalculatedGrade: FC<CalculatedGradeProps> = ({
 
       <p className="py-2 text-lg">
         Your current calculated grade is{" "}
-        <span className="font-bold">{grade}%</span>
+        <span className="font-bold">{Math.round(grade)}%</span>
       </p>
 
       {+desiredGrade > grade ? (
         <p className="rounded-sm bg-red-200 px-2 py-1">
-          You need {+desiredGrade - grade} % to get desired grade
+          You need {+desiredGrade - Math.round(grade)} % to get desired grade
         </p>
       ) : (
         <p className="rounded-sm bg-green-200 px-2 py-1">
