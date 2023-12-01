@@ -16,9 +16,9 @@ function App() {
   }
 
   return (
-    <div className="absolute inset-0 -z-20 mx-auto h-[95vh] w-[100vw] bg-main bg-contain bg-bottom bg-no-repeat md:h-[100vh] md:bg-contain">
-      <div className="mx-auto mt-14 max-w-md px-4 md:mt-32">
-        <div className="max-h-[500px] overflow-y-auto rounded-xl border-2 border-slate-400 bg-white/[0.5] px-8 py-4 backdrop-blur-md">
+    <div className="absolute inset-0 -z-20 mx-auto h-[95vh] w-[100vw] overflow-y-hidden bg-main bg-contain bg-bottom bg-no-repeat md:h-[100vh] md:bg-contain">
+      <div className="mx-auto mt-14 max-w-md px-2 md:mt-32">
+        <div className="max-h-[550px] overflow-y-auto rounded-xl border-2 border-slate-400 bg-white/[0.5] px-8 py-4 backdrop-blur-md">
           {calculatedGrade ? (
             <CalculatedGrade
               grade={calculatedGrade}
