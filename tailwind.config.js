@@ -71,7 +71,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       backgroundImage: {
-        main: "url('./learning.gif')",
+        main: "url('/learning.gif')",
       },
     },
   },
