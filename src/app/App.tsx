@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <div className="mx-auto mt-32 max-w-md px-4">
+      <div className="mx-auto mt-14 md:mt-32 max-w-md px-4">
         <div className="max-h-[500px] overflow-y-auto rounded-xl border-2 border-slate-400 bg-white/[0.5] px-8 py-4 backdrop-blur-md">
           {calculatedGrade ? (
             <CalculatedGrade grade={calculatedGrade} reset={reset} />
