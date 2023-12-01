@@ -39,24 +39,18 @@ const GradeForm: FC<GradeFormProps> = ({
       .nonnegative("Percentage can't be negative"),
   });
 
-  const DynamicSchema = useMemo(
-    () =>
-      z.object({
-        grades: z.array(GradeSchema).refine(
-          (data) => {
-            console.log(data, numberOfForms);
+  const DynamicSchema = z.object({
+    grades: z.array(GradeSchema).refine(
+      (data) => {
+        console.log(data, numberOfForms);
 
-            return data.length === numberOfForms;
-          },
-          {
-            message: `Array must contain exactly ${numberOfForms} elements`,
-          },
-        ),
-      }),
-    [numberOfForms],
-  );
-
-  console.log(DynamicSchema);
+        return data.length === numberOfForms;
+      },
+      {
+        message: `Array must contain exactly ${numberOfForms} elements`,
+      },
+    ),
+  });
 
   const gradeMethods = useForm<GradeFormData>({
     resolver: zodResolver(DynamicSchema),
@@ -78,7 +72,7 @@ const GradeForm: FC<GradeFormProps> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <FormHeader />
 
       {array.map((_, i) => (

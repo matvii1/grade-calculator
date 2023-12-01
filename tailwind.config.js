@@ -51,6 +51,14 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundSize: {
+        auto: "auto",
+        cover: "cover",
+        contain: "contain",
+        "80%": "80%",
+        "60%": "60%",
+        "50%": "50%",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

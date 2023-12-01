@@ -16,7 +16,10 @@ const CalculatedGrade: FC<CalculatedGradeProps> = ({
     <div className="flex flex-col items-start">
       <p className="text-lg font-semibold">Keep it up!</p>
 
-      <p className="py-2 text-lg">Your current calculated grade is {grade}%</p>
+      <p className="py-2 text-lg">
+        Your current calculated grade is{" "}
+        <span className="font-bold">{grade}%</span>
+      </p>
 
       {+desiredGrade > grade ? (
         <p className="rounded-sm bg-red-200 px-2 py-1">
