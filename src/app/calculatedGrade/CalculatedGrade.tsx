@@ -4,7 +4,7 @@ import { FC } from "react";
 interface CalculatedGradeProps {
   grade: number;
   reset: () => void;
-  desiredGrade: string;
+  desiredGrade: number;
 }
 
 const CalculatedGrade: FC<CalculatedGradeProps> = ({

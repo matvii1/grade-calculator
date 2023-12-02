@@ -5,8 +5,8 @@ import NumberForm from "./numberForm/NumberForm";
 
 function App() {
   const [calculatedGrade, setCalculatedGrade] = useState(0);
-  const [numberOfForms, setNumberOfForms] = useState(0);
-  const [desiredGrade, setDesiredGrade] = useState("");
+  const [numberOfForms, setNumberOfForms] = useState(1);
+  const [desiredGrade, setDesiredGrade] = useState(0);
   const [triggerRemount, setTriggerRemount] = useState(false);
 
   function reset() {

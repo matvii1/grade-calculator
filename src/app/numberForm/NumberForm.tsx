@@ -9,7 +9,7 @@ import { NumberFormSchema, defaultValues, numberFormSchema } from "./schema";
 
 type NumberFormProps = {
   setNumberOfForms: (num: number) => void;
-  setDesiredGrade: Dispatch<SetStateAction<string>>;
+  setDesiredGrade: Dispatch<SetStateAction<number>>;
   setTriggerRemount: Dispatch<SetStateAction<boolean>>;
 };
 
@@ -26,6 +26,8 @@ const NumberForm: FC<NumberFormProps> = ({
   const { handleSubmit, control } = numberMethods;
 
   function onNumberSubmit(data: NumberFormSchema) {
+    console.log(data.desiredGrade);
+    
     setNumberOfForms(data.number);
     setDesiredGrade(data.desiredGrade);
     setTriggerRemount((prev) => !prev);

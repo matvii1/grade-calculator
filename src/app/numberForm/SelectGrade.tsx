@@ -18,7 +18,7 @@ interface SelectGradeProps {
   control: Control<
     {
       number: number;
-      desiredGrade: string;
+      desiredGrade: number;
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     any
@@ -33,23 +33,26 @@ const SelectGrade: FC<SelectGradeProps> = ({ control }) => {
       render={({ field }) => (
         <FormItem>
           <FormLabel>Desired grade</FormLabel>
-          <Select onValueChange={field.onChange} defaultValue={field.value}>
+          <Select
+            onValueChange={value => field.onChange(parseInt(value))}
+            defaultValue={`${field.value}`}
+          >
             <FormControl>
               <SelectTrigger className="w-[100%]">
                 <SelectValue placeholder="Desired grade" />
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              <SelectItem value="64">D</SelectItem>
-              <SelectItem value="69">D+</SelectItem>
-              <SelectItem value="72">C-</SelectItem>
-              <SelectItem value="76">C</SelectItem>
-              <SelectItem value="79">C+</SelectItem>
-              <SelectItem value="82">B-</SelectItem>
-              <SelectItem value="86">B</SelectItem>
-              <SelectItem value="89">B+</SelectItem>
-              <SelectItem value="94">A-</SelectItem>
-              <SelectItem value="100">A</SelectItem>
+              <SelectItem value="62">D</SelectItem>
+              <SelectItem value="65">D+</SelectItem>
+              <SelectItem value="70">C-</SelectItem>
+              <SelectItem value="73">C</SelectItem>
+              <SelectItem value="77">C+</SelectItem>
+              <SelectItem value="80">B-</SelectItem>
+              <SelectItem value="83">B</SelectItem>
+              <SelectItem value="87">B+</SelectItem>
+              <SelectItem value="90">A-</SelectItem>
+              <SelectItem value="95">A</SelectItem>
             </SelectContent>
           </Select>
         </FormItem>
