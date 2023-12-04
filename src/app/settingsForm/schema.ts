@@ -5,12 +5,13 @@ export const numberFormSchema = z.object({
     .number()
     .min(1, "Must be greater than than zero")
     .max(10, "I would not be able to handle it!"),
-  desiredGrade: z.number(),
+  desiredGrade: z.string(),
 });
 
 export type NumberFormSchema = z.infer<typeof numberFormSchema>;
+export type NameOptions = "number" | "desiredGrade";
 
 export const defaultValues = {
   number: 1,
-  desiredGrade: 70,
+  desiredGrade: "70",
 };

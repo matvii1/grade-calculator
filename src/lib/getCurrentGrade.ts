@@ -1,7 +1,7 @@
-import { GradeFormData } from "@/app/gradeForm/GradeForm";
+import { GradeData } from "@/app/gradeForm/schema";
 
-export function getCurrentGrade(data: GradeFormData) {
-  return data.grades.reduce((prev, curr) => {
+export function getCurrentGrade(data: GradeData[]) {
+  return data.reduce((prev, curr) => {
     let currentGrade = 0;
 
     if (curr.grade && curr.percentage) {

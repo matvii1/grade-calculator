@@ -1,19 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import { SelectItem } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, FC, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
-import NumberInput from "./NumberInput";
-import SelectGrade from "./SelectGrade";
+import SelectControl from "./components/SelectControl";
+import { GRADES, Grades, gradesArr } from "./grades";
 import { NumberFormSchema, defaultValues, numberFormSchema } from "./schema";
 
 type NumberFormProps = {
   setNumberOfForms: (num: number) => void;
-  setDesiredGrade: Dispatch<SetStateAction<number>>;
+  setDesiredGrade: Dispatch<SetStateAction<Grades>>;
   setTriggerRemount: Dispatch<SetStateAction<boolean>>;
 };
 
-const NumberForm: FC<NumberFormProps> = ({
+const SettingsForm: FC<NumberFormProps> = ({
   setNumberOfForms,
   setTriggerRemount,
   setDesiredGrade,
@@ -23,13 +24,11 @@ const NumberForm: FC<NumberFormProps> = ({
     defaultValues,
   });
 
-  const { handleSubmit, control } = numberMethods;
+  const { handleSubmit } = numberMethods;
 
   function onNumberSubmit(data: NumberFormSchema) {
-    console.log(data.desiredGrade);
-    
     setNumberOfForms(data.number);
-    setDesiredGrade(data.desiredGrade);
+    setDesiredGrade(data.desiredGrade as Grades);
     setTriggerRemount((prev) => !prev);
   }
 
@@ -39,13 +38,34 @@ const NumberForm: FC<NumberFormProps> = ({
         onSubmit={handleSubmit(onNumberSubmit)}
         className="flex flex-col gap-2"
       >
-        <div>
-          <NumberInput control={control} />
-        </div>
+        <SelectControl
+          name="number"
+          label="Number of assignments"
+          isInt={true}
+          selectContent={
+            <>
+              {new Array(10).fill(0).map((_, i) => (
+                <SelectItem key={i} value={`${i + 1}`}>
+                  {i + 1}
+                </SelectItem>
+              ))}
+            </>
+          }
+        />
 
-        <div>
-          <SelectGrade control={control} />
-        </div>
+        <SelectControl
+          name="desiredGrade"
+          label="Desired grade"
+          selectContent={
+            <>
+              {gradesArr.map((grade) => (
+                <SelectItem value={grade} key={grade}>
+                  {GRADES[grade]}
+                </SelectItem>
+              ))}
+            </>
+          }
+        />
 
         <div className="mt-2 flex justify-end">
           <Button type="submit" variant="outline">
@@ -57,4 +77,4 @@ const NumberForm: FC<NumberFormProps> = ({
   );
 };
 
-export default NumberForm;
+export default SettingsForm;

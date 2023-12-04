@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { FC } from "react";
+import { GRADES, Grades } from "../settingsForm/grades";
+import Grade from "./Grade";
 
 interface CalculatedGradeProps {
   grade: number;
   reset: () => void;
-  desiredGrade: number;
+  desiredGrade: Grades;
 }
 
 const CalculatedGrade: FC<CalculatedGradeProps> = ({
@@ -12,22 +14,23 @@ const CalculatedGrade: FC<CalculatedGradeProps> = ({
   reset,
   desiredGrade,
 }) => {
+  const roundedGrade = Math.round(grade);
+
   return (
     <div className="flex flex-col items-start">
       <p className="text-lg font-semibold">Keep it up!</p>
 
-      <p className="py-2 text-lg">
-        Your current calculated grade is{" "}
-        <span className="font-bold">{Math.round(grade)}%</span>
-      </p>
+      <Grade roundedGrade={roundedGrade} />
 
       {+desiredGrade > grade ? (
         <p className="rounded-sm bg-red-200 px-2 py-1">
-          You need {+desiredGrade - Math.round(grade)} % to get desired grade
+          You need {+desiredGrade - roundedGrade}% more to get to{" "}
+          <span className="font-semibold">{GRADES[desiredGrade]}</span>
         </p>
       ) : (
         <p className="rounded-sm bg-green-200 px-2 py-1">
-          You got desired grade!
+          You've got{" "}
+          <span className="font-semibold">{GRADES[desiredGrade]}</span>
         </p>
       )}
 
