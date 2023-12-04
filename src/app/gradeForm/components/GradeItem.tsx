@@ -22,7 +22,7 @@ const GradeItem: FC<GradeItemProps> = ({ index }) => {
   }
 
   function onAddField() {
-    setInputsNumber((prev) => prev + 1);
+    setInputsNumber((prev) => (prev < 10 ? prev + 1 : prev));
   }
 
   function clearComposedMenu() {

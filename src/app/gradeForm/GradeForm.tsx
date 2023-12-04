@@ -13,11 +13,13 @@ import { GradeFormData, GradeSchema } from "./schema";
 type GradeFormProps = {
   numberOfForms: number;
   setCalculatedGrade: (grade: number) => void;
+  setIsGradeShown: (value: boolean) => void
 };
 
 const GradeForm: FC<GradeFormProps> = ({
   numberOfForms,
   setCalculatedGrade,
+  setIsGradeShown
 }) => {
   const { toast } = useToast();
 
@@ -43,6 +45,7 @@ const GradeForm: FC<GradeFormProps> = ({
 
     if (currentGrade > 1) {
       setCalculatedGrade(currentGrade);
+      setIsGradeShown(true)
     } else {
       toast({
         variant: "destructive",

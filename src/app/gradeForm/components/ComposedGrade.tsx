@@ -82,6 +82,7 @@ const ComposedGrade: FC<ComposedGradeProps> = ({
           className="h-6 w-10 rounded-full"
           size="sm"
           type="button"
+          disabled={inputsNumber === 10}
           onClick={onAddField}
         >
           <Plus size={20} />

@@ -4,8 +4,8 @@ import { SelectItem } from "@/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, FC, SetStateAction } from "react";
 import { useForm } from "react-hook-form";
+import { GRADES, Grades, gradesArr } from "../../lib/grades";
 import SelectControl from "./components/SelectControl";
-import { GRADES, Grades, gradesArr } from "./grades";
 import { NumberFormSchema, defaultValues, numberFormSchema } from "./schema";
 
 type NumberFormProps = {
