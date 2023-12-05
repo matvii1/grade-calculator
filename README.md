@@ -1,5 +1,5 @@
 # AAU grade calculator
-### [DEMO LINK](http://localhost:5173/grade-calculator/)
+### [DEMO LINK](https://matvii1.github.io/grade-calculator/)
 
 AAU grade calculator to see if you pass the class 📚✨
 
