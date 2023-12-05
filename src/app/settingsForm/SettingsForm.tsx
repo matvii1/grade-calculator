@@ -1,24 +1,17 @@
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { SelectItem } from "@/components/ui/select";
+import { Button } from "@/common/components/ui/button";
+import { Form } from "@/common/components/ui/form";
+import { SelectItem } from "@/common/components/ui/select";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { GRADES, Grades, gradesArr } from "../../lib/grades";
+import { GRADES, Grades, gradesArr } from "../../common/lib/grades";
 import SelectControl from "./components/SelectControl";
 import { NumberFormSchema, defaultValues, numberFormSchema } from "./schema";
+import { useGradeContext } from "../context/useGradeContext";
 
-type NumberFormProps = {
-  setNumberOfForms: (num: number) => void;
-  setDesiredGrade: Dispatch<SetStateAction<Grades>>;
-  setTriggerRemount: Dispatch<SetStateAction<boolean>>;
-};
-
-const SettingsForm: FC<NumberFormProps> = ({
-  setNumberOfForms,
-  setTriggerRemount,
-  setDesiredGrade,
-}) => {
+const SettingsForm: FC = () => {
+  const { setNumberOfForms, setDesiredGrade, setTriggerRemount } =
+    useGradeContext();
   const numberMethods = useForm<NumberFormSchema>({
     resolver: zodResolver(numberFormSchema),
     defaultValues,

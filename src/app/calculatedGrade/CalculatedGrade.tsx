@@ -1,23 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { getScoredGrade } from "@/lib/getScoredGrade";
-import { ListRestart, Undo2 } from "lucide-react";
 import { FC } from "react";
-import { GRADES, Grades } from "../../lib/grades";
+import { ListRestart, Undo2 } from "lucide-react";
+import { GRADES } from "../../common/lib/grades";
+import { useGradeContext } from "../context/useGradeContext";
 import Grade from "./Grade";
+import { Button } from "@/common/components/ui/button";
+import { getScoredGrade } from "@/common/lib/getScoredGrade";
 
-interface CalculatedGradeProps {
-  grade: number;
-  reset: () => void;
-  desiredGrade: Grades;
-  setIsGradeShown: (value: boolean) => void;
-}
+const CalculatedGrade: FC = () => {
+  const {
+    calculatedGrade: grade,
+    desiredGrade,
+    setIsGradeShown,
+    reset,
+  } = useGradeContext();
 
-const CalculatedGrade: FC<CalculatedGradeProps> = ({
-  grade,
-  reset,
-  desiredGrade,
-  setIsGradeShown,
-}) => {
   const roundedGrade = Math.round(grade);
   const isGoalAchieved = +desiredGrade > grade;
   const missingPercents = +desiredGrade - roundedGrade;
@@ -28,7 +24,7 @@ const CalculatedGrade: FC<CalculatedGradeProps> = ({
   }
 
   return (
-    <div className="mt-4 flex flex-col items-start border-t-2">
+    <div className="mt-6 flex flex-col items-start border-t-2 pt-4">
       <p className="text-lg font-semibold">Keep it up!</p>
 
       <Grade roundedGrade={roundedGrade} />
@@ -49,7 +45,7 @@ const CalculatedGrade: FC<CalculatedGradeProps> = ({
             Desired grade:{" "}
             <span className="font-semibold">{GRADES[desiredGrade]}</span>
           </p>
-          <p className="rounded-sm bg-green-200 px-2 py-1">
+          <p className="rounded-sm bg-green-200 px-2 py-1 mt-2">
             You've got grade{" "}
             <span className="font-semibold">{GRADES[scoredGrade]}</span>
           </p>

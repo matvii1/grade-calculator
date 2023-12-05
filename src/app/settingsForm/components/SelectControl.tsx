@@ -3,13 +3,13 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
+} from "@/common/components/ui/form";
 import {
   Select,
   SelectContent,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/common/components/ui/select";
 import { FC, ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 import { NameOptions, NumberFormSchema } from "../schema";

@@ -1,26 +1,19 @@
-import FormHeader from "@/components/FormHeader";
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { useToast } from "@/components/ui/use-toast";
-import { getCurrentGrade } from "@/lib/getCurrentGrade";
+import FormHeader from "@/common/components/FormHeader";
+import { Button } from "@/common/components/ui/button";
+import { Form } from "@/common/components/ui/form";
+import { useToast } from "@/common/components/ui/use-toast";
+import { getCurrentGrade } from "@/common/lib/getCurrentGrade";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import GradesList from "./components/GradesList";
 import { GradeFormData, GradeSchema } from "./schema";
+import { useGradeContext } from "../context/useGradeContext";
 
-type GradeFormProps = {
-  numberOfForms: number;
-  setCalculatedGrade: (grade: number) => void;
-  setIsGradeShown: (value: boolean) => void
-};
-
-const GradeForm: FC<GradeFormProps> = ({
-  numberOfForms,
-  setCalculatedGrade,
-  setIsGradeShown
-}) => {
+const GradeForm: FC = () => {
+  const { numberOfForms, setCalculatedGrade, setIsGradeShown } =
+    useGradeContext();
   const { toast } = useToast();
 
   const DynamicSchema = z.object({
@@ -45,7 +38,7 @@ const GradeForm: FC<GradeFormProps> = ({
 
     if (currentGrade > 1) {
       setCalculatedGrade(currentGrade);
-      setIsGradeShown(true)
+      setIsGradeShown(true);
     } else {
       toast({
         variant: "destructive",

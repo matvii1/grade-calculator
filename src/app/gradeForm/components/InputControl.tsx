@@ -4,8 +4,8 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/common/components/ui/form";
+import { Input } from "@/common/components/ui/input";
 import { FC } from "react";
 import { useFormContext } from "react-hook-form";
 import { GradeFormData } from "../schema";

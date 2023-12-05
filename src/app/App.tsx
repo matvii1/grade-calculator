@@ -1,24 +1,11 @@
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { Grades } from "../lib/grades";
+import { cn } from "@/common/lib/utils";
 import CalculatedGrade from "./calculatedGrade/CalculatedGrade";
 import GradeForm from "./gradeForm/GradeForm";
 import SettingsForm from "./settingsForm/SettingsForm";
+import { useGradeContext } from "./context/useGradeContext";
 
 function App() {
-  const [isGradeShown, setIsGradeShown] = useState(false);
-  const [calculatedGrade, setCalculatedGrade] = useState(0);
-  const [numberOfForms, setNumberOfForms] = useState(1);
-  const [desiredGrade, setDesiredGrade] = useState<Grades>("70");
-  const [triggerRemount, setTriggerRemount] = useState(false);
-
-  function reset() {
-    setCalculatedGrade(0);
-    setNumberOfForms(1);
-    setDesiredGrade("70");
-    setTriggerRemount((prev) => !prev);
-    setIsGradeShown(false);
-  }
+  const { isGradeShown, triggerRemount } = useGradeContext();
 
   return (
     <div className="h-[100dvh] bg-main bg-contain bg-bottom bg-no-repeat md:bg-60%">
@@ -29,28 +16,12 @@ function App() {
           </h1>
 
           <div className={cn(isGradeShown && "hidden")}>
-            <SettingsForm
-              setNumberOfForms={setNumberOfForms}
-              setDesiredGrade={setDesiredGrade}
-              setTriggerRemount={setTriggerRemount}
-            />
+            <SettingsForm />
 
-            <GradeForm
-              key={triggerRemount ? "A" : "B"}
-              numberOfForms={numberOfForms}
-              setCalculatedGrade={setCalculatedGrade}
-              setIsGradeShown={setIsGradeShown}
-            />
+            <GradeForm key={triggerRemount ? "A" : "B"} />
           </div>
 
-          {isGradeShown && (
-            <CalculatedGrade
-              grade={calculatedGrade}
-              reset={reset}
-              setIsGradeShown={setIsGradeShown}
-              desiredGrade={desiredGrade}
-            />
-          )}
+          {isGradeShown && <CalculatedGrade />}
         </div>
       </div>
     </div>

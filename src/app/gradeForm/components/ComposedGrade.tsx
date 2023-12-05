@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Form } from "@/components/ui/form";
-import { getCurrentGrade } from "@/lib/getCurrentGrade";
+import { Button } from "@/common/components/ui/button";
+import { Form } from "@/common/components/ui/form";
+import { getCurrentGrade } from "@/common/lib/getCurrentGrade";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus } from "lucide-react";
 import { FC } from "react";

@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@/common/components/ui/button";
+import { cn } from "@/common/lib/utils";
 import { FC, useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { GradeFormData } from "../schema";
