@@ -7,4 +7,4 @@ Technologies:
 - Vite
 - Zod
 - React hook form
-- Contexts
+- Context
