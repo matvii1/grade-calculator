@@ -45,7 +45,7 @@ const CalculatedGrade: FC = () => {
             Desired grade:{" "}
             <span className="font-semibold">{GRADES[desiredGrade]}</span>
           </p>
-          <p className="rounded-sm bg-green-200 px-2 py-1 mt-2">
+          <p className="rounded-sm bg-green-200 px-2 py-1 mt-2p">
             You've got grade{" "}
             <span className="font-semibold">{GRADES[scoredGrade]}</span>
           </p>
